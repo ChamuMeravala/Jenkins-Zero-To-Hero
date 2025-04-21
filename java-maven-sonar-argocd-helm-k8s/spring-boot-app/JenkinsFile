@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'chamuf5/maven-chamu-docker-agent:v1'
+      image 'chamumeravala/maven-chamu-docker-agent:v1'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "chamuf5/ultimate-cicd:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "chamumeravala/ultimate-cicd:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
